@@ -17,11 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
+from admin_panel import views
 
 from django.conf import settings
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.create_word, name = 'dash'),
+    path('login', views.login_user, name = 'login'),
+    path('dash1/<int:id>', views.create_word2, name = 'dash2'),
+    path('dash2/<int:id>', views.create_word3, name = 'dash3'),
+    path('dash3/<int:id>', views.word_finish, name = 'dash4'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
